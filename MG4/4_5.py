@@ -1,12 +1,28 @@
-def odwracanie(L, left, right):
-    temp = 0;
-    while(left < right):
-        temp = L[left]
-        L[left] = L[right]
-        L[right] = temp
-        left += 1
-        right -= 1
-    print L
+def odwracanie(l, left, right):
+    right += len(l) if right < 0 else 1
+    l[left:right] = l[left:right][::-1]
 
-L = [0,1,2,3,4,5,6,7,8]
-odwracanie(L, 2, 6)
+
+def odwracanie_iter(l, left, right):
+    if right >= len(l):
+        right = len(l) - 1
+    if left < 0:
+        left = 0
+    for x in range(left, right + 1):
+        l.insert(x, l.pop(right))
+
+
+def odwracanie_rec(l, left, right):
+    if right >= len(l):
+        right = len(l) - 1
+    if left < 0:
+        left = 0
+    if left is not right:
+        l.insert(left, l.pop(right))
+        odwracanie_rec(l, left + 1, right)
+
+
+L = [1, 2, 3, 4, 5, 6, 7, 8]
+print L
+odwracanie(L, 0, 7)
+print L

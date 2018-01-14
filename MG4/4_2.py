@@ -1,8 +1,7 @@
-def ruler():
+def ruler(x):
 
     miara = '|'
     liczba = '0'
-    x = input("Podaj dlugosc: ")
     for i in range(1, x+1):
         miara = miara + '....|'
         if i < 10:
@@ -12,9 +11,7 @@ def ruler():
     linijka = miara + '\n' + liczba
     return linijka
 
-def table():
-    x = input('Ile kolumn: ')
-    y = input('Ile wierszy: ')
+def table(x,y):
     
     x1 = '+'
     x2 = '|'
@@ -29,9 +26,11 @@ def table():
 
     return tabela
 
-
-
-linijka = ruler()
+x = input("Podaj dlugosc linijki: ")
+linijka = ruler(x)
 print linijka
-tabela = table()
+
+y = input('Ile kolumn tabeli: ')
+z = input('Ile wierszy tabeli: ')
+tabela = table(y,z)
 print tabela
