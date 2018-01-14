@@ -1,19 +1,17 @@
-from nodeT import Node
+#!/usr/bin/python
 
-def traverse_preorder(top):
+def min_bst(top):
     if top is None:
-        raise ValueError("Puste drzewo!")
-    traverse_preorder(top.left, visit)
-    traverse_preorder(top.right, visit)
+        raise ValueError()
+    elif top.left is None:
+        top = top.left
+    return top
 
-def bst_max(top):
+def max_bst(top):
     if top is None:
-        raise ValueError("Puste drzewo!")
-    else
-        minNode = top
-        traverse_preorder(top)
-        
+        raise ValueError()
+    elif top.right is None:
+        top = top.right
+    return top
 
-
-def bst_min(top): pass
 
