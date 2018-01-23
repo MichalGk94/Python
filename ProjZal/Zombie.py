@@ -66,7 +66,7 @@ while running:
             arrow1 = pygame.transform.rotate(arrow, 360-projectile[0]*57.29)
             screen.blit(arrow1, (projectile[1], projectile[2]))
 
-    # 6.3 - Draw badgers
+    # 6.3 - Draw zombies
     if badTimer == 0:
         badGuys.append([800, random.randint(50,500)])
         badTimer = 100-(badTimer0*2)
@@ -80,7 +80,7 @@ while running:
             badGuys.pop(index)
         badGuy[0] -= 2.5
 
-        # 6.3.1 - Attack castle
+        # 6.3.1 - Attack village
         badRect = pygame.Rect(badguyimg.get_rect())
         badRect.top = badGuy[1]
         badRect.left = badGuy[0]
@@ -112,7 +112,7 @@ while running:
     textRect.topright = [795,5]
     screen.blit(timeText, textRect)
 
-    # 6.5 - Draw health bar
+    # 6.5 - Draw survivors counter
     surviveText = font.render("Survivors left: " + str(survivors), True, (0,0,0))
     textRect = surviveText.get_rect()
     textRect.topleft = [5,5]
