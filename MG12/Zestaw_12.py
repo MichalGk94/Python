@@ -6,7 +6,6 @@ from random import randrange
 
 """Zadanie 1"""
 
-
 def linear_search(L, left, right, y):
     print y
     i = left
@@ -46,19 +45,18 @@ array.sort()
 """print array
 print binarne_rek(array, 0, len(array), 1)"""
 
+list = [6, 3, 7, 8, 5, 2, 1, 4, 9, 7]
+print list
+
 
 def mediana_sort(L, left, right):
     L.sort()
-    print L
     return L[(right - left) / 2] if (right - left) % 2 == 1 else (
                                                                      L[(right - left) / 2] + L[
                                                                          (right - left) / 2 + 1]) / 2.
 
-
-list = [6, 3, 7, 8, 5, 2, 1, 4, 7, 7]
-
-
-# print mediana_sort(list, 0, len(list))
+print "Mediana sort: " + str(mediana_sort(list, 2, len(list)-2))
+print "Mediana sort: " + str(mediana_sort(list, 0, len(list)-1))
 
 
 def moda_sort(L, left, right):
@@ -81,7 +79,7 @@ def moda_sort(L, left, right):
     return L[mod]
 
 
-# print moda_sort(list, 0, len(list) - 1)
+print "Moda sort: " + str(moda_sort(list, 1, len(list)-1))
 
 
 def moda_py(L, left, right):
@@ -92,7 +90,8 @@ def moda_py(L, left, right):
     return max(count, key = count.get)
 
 
-# print array[moda_py(array, 0, len(array))]
+print "Moda py: " + str(array[moda_py(array, 5, len(array)-1)])
+print "Moda py: " + str(array[moda_py(array, 2, len(array)-3)])
 
 
 def lider_py(L, left, right):
@@ -108,4 +107,5 @@ def lider_py(L, left, right):
 
 
 li = [1, 5, 5, 5, 5, 5, 5, 7, 8]
-print lider_py(li, 0, len(li))
+print "Lider py: " + str(lider_py(li, 3, len(li)-3))
+print "Lider py: " + str(lider_py(li, 1, len(li)-2))
