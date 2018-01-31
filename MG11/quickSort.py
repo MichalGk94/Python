@@ -32,9 +32,9 @@ print k, '\n', j
 print timeit.Timer("quicksort(l,0,199)",
                    "import genSort; from __main__ import quicksort; l = genSort.genRand(1000, 200)").timeit(100)
 print timeit.Timer("quicksort(l,0,199)", "import genSort; from __main__ import quicksort; l = "
-                                         "genSort.genRandSort(1000, 200)").timeit(100)
+                                         "genSort.genRandSort(1000, 200, 4)").timeit(100)
 print timeit.Timer("quicksort(l,0,199)", "import genSort; from __main__ import quicksort; l = "
-                                         "genSort.genRandSortRev(1000, 200)").timeit(100)
+                                         "genSort.genRandSortRev(1000, 200,4)").timeit(100)
 print timeit.Timer("quicksort(l,0,199)",
                    "import genSort; from __main__ import quicksort; l = genSort.genGauss(200)").timeit(100)
 print timeit.Timer("quicksort(l,0,199)",
