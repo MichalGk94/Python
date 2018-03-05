@@ -46,40 +46,55 @@ array.sort()
 print binarne_rek(array, 0, len(array), 1)"""
 
 list = [6, 3, 7, 8, 5, 2, 1, 4, 9, 7]
-print list
+list2 = [6, 3, 7, 7, 5, 2, 7, 1, 7, 4, 9, 7]
+#print list
 
 
 def mediana_sort(L, left, right):
-    L.sort()
-    return L[(right - left) / 2] if (right - left) % 2 == 1 else (
-                                                                     L[(right - left) / 2] + L[
-                                                                         (right - left) / 2 + 1]) / 2.
+    M = L[left:right]
+    M.sort()
+    S = L[0:left-1] + M
+    S += L[right-1:len(L)]
 
-print "Mediana sort: " + str(mediana_sort(list, 2, len(list)-2))
-print "Mediana sort: " + str(mediana_sort(list, 0, len(list)-1))
+    print "Lista przed sortowaniem: " + str(L)
+    print "Lista po sortowaniu: " + str(S)
+
+    return S[(right - left) / 2]
+
+print "Mediana: " + str(mediana_sort(list, 2, len(list)-2))
+
+#print "Mediana sort: " + str(mediana_sort(list, 2, len(list)-2))
+#print "Mediana sort: " + str(mediana_sort(list, 0, len(list)-1))
 
 
-def moda_sort(L, left, right):
-    if left + 1 > right:
+def moda(L, left, right):
+    """Wyszukiwanie mody w ciągu."""
+    if left+1 > right:
         return None
-    L.sort()
-    mod = None
-    modcount = 0
-    value = left
-    valuecount = 1
-    while value < right:
-        value += 1
-        if L[value] == L[value - 1]:
-            valuecount += 1
-            if valuecount > modcount:
-                modcount = valuecount
-                mod = value
-        else:
-            valuecount = 1
-    return L[mod]
+
+    M = L[left:right]
+    M.sort()
+    i1 = None             # najlepszy kandydat (indeks)
+    number1 = 0           # jego liczebność
+    i2 = 0             # bieżący element (indeks)
+    number2 = 1           # jego liczebność
+    while i2 < len(M)-1:
+        i2 += 1
+        if M[i2] == M[i2-1]:    # jeżeli się powtórzył
+            number2 += 1
+            # na bieżąco uaktualniamy najlepszego kandydata
+            if number2 > number1:  # jest lepszy kandydat
+                number1 = number2
+                i1 = i2
+        else:                   # nowy bieżący element
+            number2 = 1
+    print "Lista przed posortowaniem: " + str(L)
+    L[left:right] = M[0:(len(M))]
+    print "Lista po posortowaniu: " + str(L)
+    return i1
 
 
-print "Moda sort: " + str(moda_sort(list, 1, len(list)-1))
+print "Moda sort: " + str(moda(list2, 2, len(list2)-2))
 
 
 def moda_py(L, left, right):
@@ -90,8 +105,8 @@ def moda_py(L, left, right):
     return max(count, key = count.get)
 
 
-print "Moda py: " + str(array[moda_py(array, 5, len(array)-1)])
-print "Moda py: " + str(array[moda_py(array, 2, len(array)-3)])
+#print "Moda py: " + str(array[moda_py(array, 5, len(array)-1)])
+#print "Moda py: " + str(array[moda_py(array, 2, len(array)-3)])
 
 
 def lider_py(L, left, right):
@@ -107,5 +122,5 @@ def lider_py(L, left, right):
 
 
 li = [1, 5, 5, 5, 5, 5, 5, 7, 8]
-print "Lider py: " + str(lider_py(li, 3, len(li)-3))
-print "Lider py: " + str(lider_py(li, 1, len(li)-2))
+#print "Lider py: " + str(lider_py(li, 3, len(li)-3))
+#print "Lider py: " + str(lider_py(li, 1, len(li)-2))
